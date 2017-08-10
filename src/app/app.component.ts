@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TransferState } from '../modules/transfer-state/transfer-state';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 
+import { AnimationBuilder } from '@angular/animations';
+
 @Component({
   selector: 'demo-app',
   template: `
@@ -17,7 +19,10 @@ import { REQUEST } from '@nguniversal/express-engine/tokens';
   ]
 })
 export class AppComponent implements OnInit {
-  constructor(private cache: TransferState) { }
+  constructor(
+    private cache: TransferState,
+    private animationBuilder:AnimationBuilder /* this injection is whats breaking universal */
+  ) { }
 
   ngOnInit() {
     // This is an example

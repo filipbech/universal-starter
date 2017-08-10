@@ -6,6 +6,11 @@ import { AppModule } from './app.module';
 import { TransferState } from '../modules/transfer-state/transfer-state';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+//this is a workaround
+//global['document'] = {body:{}};
+
 export function onBootstrap(appRef: ApplicationRef, transferState: TransferState) {
   return () => {
     appRef.isStable
@@ -24,6 +29,7 @@ export function onBootstrap(appRef: ApplicationRef, transferState: TransferState
       appId: 'my-app-id'
     }),
     ServerModule,
+    NoopAnimationsModule,
     ServerTransferStateModule,
     AppModule
   ],
